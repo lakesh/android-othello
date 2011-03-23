@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">    
+    <item android:id="@+id/high_score"
+          android:icon="@drawable/high_score"          
+          android:title="@string/high_score" />
+	<item android:id="@+id/help"          
+	      android:icon="@drawable/help"
+          android:title="@string/help" />                    
+	<item android:id="@+id/about"          
+	      android:icon="@drawable/about"
+          android:title="@string/about" />
+    <item android:id="@+id/back"          
+          android:icon="@drawable/back"
+          android:title="@string/back" />  
+    <item android:id="@+id/exit"          
+          android:icon="@drawable/exit"
+          android:title="@string/exit" />
+       
+</menu>

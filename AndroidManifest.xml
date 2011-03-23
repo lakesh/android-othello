@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.lakesh"
+      android:versionCode="1"
+      android:versionName="1.0">
+      
+      <application android:icon="@drawable/icon">
+        <activity android:name="com.lakesh.ui.SplashScreen" android:label="@string/app_name">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.lakesh.ui.Main" android:label="@string/app_name">
+        	<intent-filter>
+        		<action android:name="com.google.app.splashy.CLEARSPLASH"/>
+        		<category android:name="android.intent.category.DEFAULT"/>
+        	</intent-filter>
+        </activity>
+        <activity android:name="com.lakesh.ui.Help" android:label="@string/app_name">
+        	<intent-filter>
+        		<action android:name="com.lakesh.ui.Help"/>        		
+        	</intent-filter>
+        </activity>
+        <activity android:name="com.lakesh.ui.About" android:label="@string/app_name">
+        	<intent-filter>
+        		<action android:name="com.lakesh.ui.About"/>        		
+        	</intent-filter>
+        </activity>
+        <activity android:name="com.lakesh.ui.HighScore" android:label="@string/app_name">
+        	<intent-filter>
+        		<action android:name="com.lakesh.ui.HighScore"/>        		
+        	</intent-filter>
+        </activity>
+    </application>
+</manifest> 

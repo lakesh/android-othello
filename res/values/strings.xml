@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Main!</string>
+    <string name="app_name">Othello</string>    
+    <string name="main_screen">MainScreen</string>
+    <string name="splash_screen">SplashScreen</string>
+    <string name="high_score">High Score</string>
+    <string name="about">About</string>
+    <string name="help">Help</string>
+    <string name="new_game">New Game</string>
+    <string name="pass">Pass</string>
+    <string name="exit">Exit</string>
+    <string name="back">Back</string>
+</resources>
