@@ -20,12 +20,7 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 public class Main extends Activity {
 	
     GameCanvas gameCanvas;
-    int width = 0;
-    int height = 0;
-    int pass = 0;
-    int xpos = 0;
-    int ypos = 0;
-    private DataHelper dataHelper;
+    DataHelper dataHelper;
 	
     /** Called when the activity is first created. */
     @Override
