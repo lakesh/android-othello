@@ -7,6 +7,7 @@ import com.lakesh.constants.Engine;
 import com.lakesh.core.Cell;
 import com.lakesh.core.Coordinate;
 import com.lakesh.core.GameEngine;
+import com.lakesh.db.DataHelper;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -192,7 +193,7 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 		turn = Coin.WHITE;
 		gameEnded = false;
 		winner = "";
-		drawBoard();
+		drawBoard();		
 		if(!gameThread.isAlive()) {
 			gameThread.start();
 		}
@@ -367,23 +368,21 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 			if (reversi.checkDraw() == true) {
 				if (reversi.getWinner() == Coin.BLACK) {
 					gameEnded = true;
-					winner = "Winner is BLACK";					
+					winner = main.getString(R.string.blackWinner);					
 				} else if (reversi.getWinner() == Coin.WHITE) {
 					gameEnded = true;
-					winner = "Winner is WHITE";					
+					winner = main.getString(R.string.whiteWinner);					
 				} else {
 					gameEnded = true;
-					winner = "It's a draw";					
+					winner = main.getString(R.string.draw);					
 				}
 				drawBoard();
-				statusHandler.sendEmptyMessage(0);
-				
+				statusHandler.sendEmptyMessage(0);				
 				break;
 			} else {
-				if (turn == Coin.WHITE) {
-					
+				if (turn == Coin.WHITE) {					
 					while (moveMade == false) {
-						
+						//wait till the user makes a move
 					}
 					reversi.display();					
 					turn = Coin.BLACK;					
@@ -469,18 +468,6 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 		}
 	}
 	
-	private void updateTurn(Canvas canvas) {
-		Paint paint = new Paint();
-		paint.setStyle(Paint.Style.FILL);
-		paint.setStrokeWidth(2);		    
-		paint.setColor(Color.WHITE);	
-		paint.setTextSize(10);
-		canvas.setDrawFilter(new PaintFlagsDrawFilter(0,
-				 Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG));				
-		
-		paint.setColor(Color.BLACK);
-		
-	}
 	
 	
 	@Override
@@ -494,11 +481,10 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 
 	}
 
-	public void MouseResponse(int x, int y) {
+	public void touchResponse(int x, int y) {
 		if (turn == Coin.WHITE) {
 			Cell position = findposition(x, y);
-			if (position != null) {
-				// logger.info(position.getx() + " " + position.gety());
+			if (position != null) {				
 				if (reversi.checkmovevalidity(reversi.board,
 						position.getx() + 1, position.gety() + 1, Coin.WHITE) == true) {
 					position.setx(position.getx() + 1);
@@ -507,10 +493,8 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 					flipCells(position.getx(), position.gety(),
 							Coin.WHITE);
 					drawBoard();
-					reversi.increaseNoOfMoves();
-					// logger.info("Setting move made to true");
-					moveMade = true;
-					// logger.info("The movemade value is " + movemade);
+					reversi.increaseNoOfMoves();					
+					moveMade = true;					
 				} else {
 					Log.i("debug", "Invalid move");
 
@@ -522,7 +506,7 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
     
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {		
-		MouseResponse((int) event.getX(), (int) event.getY());
+		touchResponse((int) event.getX(), (int) event.getY());
 		return super.onTouchEvent(event);
 	}
 	
@@ -556,8 +540,9 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 
 			@Override
 			public void onClick(View v) {
-				if( save.getId() == ((Button)v).getId() ){					
-					main.saveScore(name.getText().toString(), reversi.countBlack(),reversi.countWhite());					
+				if( save.getId() == ((Button)v).getId() ){	
+					DataHelper dataHelper = new DataHelper(saveScore.getContext());
+					dataHelper.insert(name.getText().toString(), reversi.countBlack(),reversi.countWhite());					
 					saveScore.dismiss();					
 			     } else if( cancel.getId() == ((Button)v).getId() ){
 			    	 saveScore.dismiss();

@@ -11,4 +11,7 @@
     <string name="pass">Pass</string>
     <string name="exit">Exit</string>
     <string name="back">Back</string>
+    <string name="whiteWinner">Winner is WHITE</string>
+    <string name="blackWinner">Winner is BLACK</string>
+    <string name="draw">Game is a draw</string>
 </resources>

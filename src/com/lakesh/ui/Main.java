@@ -94,16 +94,11 @@ public class Main extends Activity {
         default:
             return super.onOptionsItemSelected(item);
         }
-    }
-    
+    }    
     
     
     private void newGame() {
     	gameCanvas.reset();   	    	
-    }
-    
-    public void saveScore(String name, int black_score, int white_score) {
-    	dataHelper.insert(name, black_score, white_score);
-    }
+    }    
    
 }
