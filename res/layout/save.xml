@@ -21,7 +21,6 @@
 		android:layout_height="wrap_content"		
 		android:layout_width="wrap_content"
 		android:layout_below="@id/name"
-		android:paddingLeft="20px" 
 		android:layout_alignParentLeft="true"/>
 		
 	<Button android:text="No Thanks"
@@ -29,7 +28,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_toRightOf="@id/save"
-		android:paddingLeft="20px"
 		android:layout_below="@id/name"/>
 		
 </RelativeLayout>
