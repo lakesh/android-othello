@@ -49,8 +49,7 @@ public class About extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
         case R.id.back:
-        	Log.i("info", "back");
-        	startActivity(new Intent(this, Main.class));
+        	Log.i("info", "back");        	
         	finish();            
             return true;   
         case R.id.exit:

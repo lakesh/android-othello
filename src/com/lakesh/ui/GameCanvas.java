@@ -104,7 +104,7 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
 		Canvas canvas = null;
-		Log.i("debug", "Drawing the surface");
+		
 
 		try {
 
@@ -134,9 +134,7 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 		canvas.drawPaint(paint);
 
 		int width = this.canvasWidth;
-		int height = this.canvasHeight;
-		Log.i("debug", "Dodraw" + canvasWidth);
-		Log.i("debug", "Dodraw" + canvasHeight);
+		int height = this.canvasHeight;		
 
 		int xpos = width / 8;
 		int ypos = height / 8;
@@ -415,15 +413,12 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 		}
 	}
 
-	private void drawContent(Canvas canvas) {
-		Log.i("debug", "Inside draw content");
+	private void drawContent(Canvas canvas) {		
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
-				if (reversi.board[i][j] == Coin.BLACK) {
-					Log.i("debug", "BLACK");
+				if (reversi.board[i][j] == Coin.BLACK) {					
 					drawCross(canvas, new Cell(i - 1, j - 1));
-				} else if (reversi.board[i][j] == Coin.WHITE) {
-					Log.i("debug", "WHITE");
+				} else if (reversi.board[i][j] == Coin.WHITE) {					
 					drawCircle(canvas, new Cell(i - 1, j - 1));
 				}
 			}
@@ -437,7 +432,7 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 		int yOffset = (int) (((canvasHeight) / 8 - Coin.DIMENSION) / 2);
 		Point a = boardSquareCoordinates[cell.getx()][cell.gety()].getPoint(0);
 		canvas.drawBitmap(white, a.x + xOffset, a.y + yOffset, paint);
-		Log.i("debug", String.valueOf(a.x) + String.valueOf(a.y));
+		
 	}
 
 	private void drawCross(Canvas canvas, Cell cell) {
@@ -446,7 +441,7 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 		int yOffset = (int) (((canvasHeight) / 8 - Coin.DIMENSION) / 2);
 		Point a = boardSquareCoordinates[cell.getx()][cell.gety()].getPoint(0);	
 		canvas.drawBitmap(black, a.x + xOffset, a.y + yOffset, paint);
-		Log.i("debug", String.valueOf(a.x) + String.valueOf(a.y));
+		
 	}
 
 	private void updateScores(Canvas canvas) {
@@ -526,8 +521,7 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 	}	
     
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		Log.i("debug", "Inside mouse motion");
+	public boolean onTouchEvent(MotionEvent event) {		
 		MouseResponse((int) event.getX(), (int) event.getY());
 		return super.onTouchEvent(event);
 	}
@@ -562,8 +556,7 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 
 			@Override
 			public void onClick(View v) {
-				if( save.getId() == ((Button)v).getId() ){
-					Log.i("debug", "Inside the save");
+				if( save.getId() == ((Button)v).getId() ){					
 					main.saveScore(name.getText().toString(), reversi.countBlack(),reversi.countWhite());					
 					saveScore.dismiss();					
 			     } else if( cancel.getId() == ((Button)v).getId() ){
@@ -589,7 +582,7 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 		
 		public void handleMessage(Message msg) {
 			gameCanvas.initializeSaveScoreDialog();
-			Log.i("debug","inside handler");		
+				
 			super.handleMessage(msg);			
 			
 		}

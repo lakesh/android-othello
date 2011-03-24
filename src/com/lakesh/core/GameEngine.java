@@ -224,7 +224,7 @@ public class GameEngine {
          * left then we can return the evaluated value
          */
         if(noOfMoves >= 58) {
-            Log.i("debug","noofmoves great");
+            
             if ((validMoves(negamaxboard,player) == null) && (validMoves(negamaxboard,opposite(player)) == null)) {
                 return getDifference(player)*200;
             }             

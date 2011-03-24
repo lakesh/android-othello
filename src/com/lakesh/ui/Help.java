@@ -54,7 +54,6 @@ public class Help extends Activity {
         // Handle item selection
         switch (item.getItemId()) {        
 	        case R.id.back:	        	
-	        	startActivity(new Intent(this, Main.class));
 	        	finish();            
 	            return true;
 	        case R.id.exit:	        	

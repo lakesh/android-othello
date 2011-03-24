@@ -81,18 +81,15 @@ public class Main extends Activity {
             return true;
         case R.id.help:
         	Log.i("info", "Help");
-        	startActivity(new Intent(this, Help.class));
-        	finish();            
+        	startActivity(new Intent(this, Help.class));        	           
             return true;
         case R.id.about:
         	Log.i("info", "About");
-        	startActivity(new Intent(this, About.class));
-        	finish();            
+        	startActivity(new Intent(this, About.class));        	
             return true;
         case R.id.high_score:
         	Log.i("info", "High Score");
-        	startActivity(new Intent(this, HighScore.class));
-        	finish();        	
+        	startActivity(new Intent(this, HighScore.class));        	
             return true;
         default:
             return super.onOptionsItemSelected(item);
