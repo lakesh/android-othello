@@ -48,13 +48,14 @@ public class DataHelper {
    public List<List> selectAll() {
       List<List> list = new ArrayList<List>();
       Cursor cursor = this.db.query(TABLE_NAME, new String[] { "name", "black_score", "white_score" }, 
-        null, null, null, null, "white_score desc");
+        null, null, null, null, null);
       if (cursor.moveToFirst()) {
          do {
         	 List<String> record = new ArrayList<String>();
+        	 
         	 record.add(cursor.getString(0));
         	 record.add(String.valueOf(cursor.getLong(1)));
-        	 record.add(String.valueOf(cursor.getLong(2)));
+        	 record.add(String.valueOf(cursor.getLong(2)));        	 
         	 list.add(record);             
          } while (cursor.moveToNext());
       }

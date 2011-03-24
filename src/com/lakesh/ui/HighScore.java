@@ -1,28 +1,60 @@
 package com.lakesh.ui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.lakesh.R;
+import com.lakesh.db.DataHelper;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 public class HighScore extends Activity {
 	
 	private TextView help;
+	private DataHelper dataHelper;
     
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);        
-        setContentView(R.layout.high_score);		
+        setContentView(R.layout.high_score);	
+        populateData();
     }   
+    
+    
+    private void populateData() {
+    	TableLayout table = (TableLayout)findViewById(R.id.high_score_table);
+    	dataHelper = new DataHelper(this);
+    	List<List>highScore = new ArrayList<List>();
+    	highScore = dataHelper.selectAll();
+    	for(int i = 0; i < highScore.size(); i++) {
+    		List<String> data = highScore.get(i);
+    		TableRow row = new TableRow(this);
+    		TextView  name = new TextView(this);
+    		TextView  black_score = new TextView(this);
+    		TextView  white_score = new TextView(this);
+    		name.setText(data.get(0));
+    		black_score.setText(data.get(1));
+    		white_score.setText(data.get(2));    		
+    		row.addView(name);
+    		row.addView(black_score);
+    		row.addView(white_score);
+    		table.addView(row);
+    	}
+    	
+    }
     
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,

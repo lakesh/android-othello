@@ -460,16 +460,16 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 		Rect rect = new Rect(1, canvasHeight, canvasWidth, canvasHeight + scoreBoardHeight);		
 		canvas.drawRect(rect, paint);
 		paint.setColor(Color.BLACK);		
-		canvas.drawText("White : " + reversi.countWhite(), 15, canvasHeight + 15, paint);
+		canvas.drawText("White : " + reversi.countWhite(), 15, canvasHeight + 30, paint);
 		canvas.drawText("Black : " + reversi.countBlack(), 115,
-				canvasHeight + 15, paint);
+				canvasHeight + 30, paint);
 		if(gameEnded == true) {
-			canvas.drawText(winner, 15, canvasHeight + 40, paint);
+			canvas.drawText(winner, 15, canvasHeight + 50, paint);
 		} else {
 			if(turn == Coin.BLACK) {
-				canvas.drawText(" I am thinking !!!!", 15, canvasHeight + 40, paint);
+				canvas.drawText(" I am thinking !!!!", 15, canvasHeight + 50, paint);
 			} else {
-				canvas.drawText(" Your turn !!!!", 15, canvasHeight + 40, paint);
+				canvas.drawText(" Your turn !!!!", 15, canvasHeight + 50, paint);
 			}
 		}
 	}
@@ -564,7 +564,7 @@ public class GameCanvas extends SurfaceView implements SurfaceHolder.Callback,
 			public void onClick(View v) {
 				if( save.getId() == ((Button)v).getId() ){
 					Log.i("debug", "Inside the save");
-					main.saveScore(name.getText().toString(), reversi.countBlack(),reversi.countBlack());					
+					main.saveScore(name.getText().toString(), reversi.countBlack(),reversi.countWhite());					
 					saveScore.dismiss();					
 			     } else if( cancel.getId() == ((Button)v).getId() ){
 			    	 saveScore.dismiss();
