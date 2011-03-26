@@ -1,0 +1,12 @@
+Description : Porting Othello to Android
+
+
+Project :
+  Android version  : 2.1
+  Editor used      : Eclipse
+  
+Run  :
+  Import the project to Eclipse
+  Clean the project
+  Create AVD ( Android Virtual Device ) 
+  Finally run the project
